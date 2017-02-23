@@ -1,0 +1,362 @@
+﻿@model InventoryTool.Models.Fleet
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Fleet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LogNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CorpCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CorpCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FleetNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FleetNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VinNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VinNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Make)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelCar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelCar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CapCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CapCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inservice_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inservice_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inservice_process)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inservice_process)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Original_Inservice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Original_Inservice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Original_Process)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Original_Process)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Offroad_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offroad_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Offroad_process)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Offroad_process)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sold_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sold_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sold_process)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sold_process)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cancel_Unit_ind)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cancel_Unit_ind)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amort_term)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amort_term)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Leased_months_billed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Leased_months_billed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Psp_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Psp_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Psp_process)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Psp_process)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.End_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.End_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitAdd_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitAdd_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScontrNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScontrNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LicenseNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LicenseNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Roe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Roe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DealerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DealerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SignedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delivery_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delivery_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Insurance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Insurance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Secdep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Secdep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Residual_Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residual_Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Level)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Level)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LevelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LevelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TTL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TTL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutletCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutletCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OutletName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OutletName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FleetID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<InventoryTool.ViewModels.UserView>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Permissions Manager</h2>
+
+<table class="table">
+    <tr>
+    <th>
+        Name
+    </th>
+    <th>
+        Email
+    </th>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Roles", "Roles", new { userID = item.UserID }) 
+        </td>
+    </tr>
+    }
+</table>
