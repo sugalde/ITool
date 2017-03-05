@@ -1,2 +1,2 @@
-# ITool
-Inventory tool - Código inicial
+# InventoryToolApp
+Inventory Tool Application in MVC

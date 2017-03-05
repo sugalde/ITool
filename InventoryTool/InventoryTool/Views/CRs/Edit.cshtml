@@ -1,0 +1,251 @@
+﻿@model InventoryTool.ViewModels.newCR
+@using InventoryTool.Models
+@{
+    ViewBag.Title = "Edit";
+}
+<br />
+<h2>Edit C&R</h2>
+
+@Html.ActionLink("Historic", "Historic", new {id = Model.cr.crID, vin = Model.cr.VINnumber, screen=2 } ) |
+@Html.ActionLink("C&Rs List", "Index") |
+@Html.ActionLink("Create New", "Phantom", "Fleets")
+
+<div class="row">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+    
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.cr.crID)
+        @Html.HiddenFor(model => model.cr.WAnumber)
+        @Html.HiddenFor(model => model.cr.Servicedate)
+        @Html.HiddenFor(model => model.cr.Status)
+        @Html.HiddenFor(model => model.cr.Clientname)
+        @Html.HiddenFor(model => model.cr.Subtotal)
+        @Html.HiddenFor(model => model.cr.IVA)
+        @Html.HiddenFor(model => model.cr.Total)
+        @Html.HiddenFor(model => model.cr.CreatedBy)
+        @Html.HiddenFor(model => model.cr.Invoicedate)
+        @Html.HiddenFor(model => model.cr.Paymentdate)
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Save changes" class="btn btn-warning" />
+            </div>
+        </div>
+        <hr />
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.cr.WAnumber, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.cr.WAnumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.cr.WAnumber)
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.cr.VINnumber, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.cr.VINnumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.cr.VINnumber)
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.cr.Clientname, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.cr.Clientname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.cr.Clientname)
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.cr.Servicedate, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.cr.Servicedate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.cr.Servicedate)
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.cr.Odometer, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.cr.Odometer, new { htmlAttributes = new { @class = "form-control" } })
+                @*@{var historic = (CR)ViewData["CRhistoric"]; }
+                <span style="color:brown">(Last: @historic.Odometer)</span>*@
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.cr.Status, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-6">
+                @Html.DisplayFor(model => model.cr.Status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.HiddenFor(model => model.cr.Status)
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            
+            @Html.LabelFor(model => model.cr.Supplier, htmlAttributes: new { @class = "control-label col-md-4" })
+            
+            <div class="col-md-6">
+                @Html.ActionLink("Supplier", "Supplier", new { @class = "control-label col-md-4", id = Model.cr.crID, screen = 2 })
+                @Html.EditorFor(model => model.cr.Supplier, new { htmlAttributes = new { @class = "form-control" } })
+                @{Ssupplier supplier= (Ssupplier)ViewData["supplier"]; }
+                <p><span>Supplier name:</span>@supplier.SupplierName</p>
+                <span>Telephone/fax/email:</span>@supplier.Telephonefaxemail
+            </div>
+        
+        </div>     
+    </div>
+}
+</div>
+
+@{
+    List<Acode> atacodes = ViewBag.Listcodes;
+    Model.crdetail.IDCR = Model.cr.crID;
+}
+
+@using (Html.BeginForm("Create", "CRdetails", new { screen = 2 }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>ATA Codes</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+        @Html.HiddenFor(m => m.crdetail.IDCR)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.crdetail.Atacode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.crdetail.Atacode, new SelectList(atacodes, "Code", "Description"))
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.crdetail.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.crdetail.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.crdetail.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.crdetail.Requested, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.crdetail.Requested, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.crdetail.Requested, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.crdetail.Authorized, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.crdetail.Authorized, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.crdetail.Authorized, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+@{
+    List<CRdetail> modeldetailList = ViewData["CRdetails"] as List<CRdetail>;
+    var requested = 0.0m;
+    var authorized = 0.0m;
+}
+<table class="table">
+    <tr>
+        <th>
+         IDCR
+        </th>
+        <th>
+        Quantity
+        </th>
+        <th>
+        Atacode
+        </th>
+        <th>
+         Description
+        </th>
+        <th>
+        Requested
+        </th>
+        <th>
+        Authorized
+        </th>
+        <th>
+         Create date
+        </th>
+        <th>
+        CreatedBy
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    @foreach (CRdetail item in modeldetailList)
+    {
+        requested = requested + item.Requested;
+        authorized = authorized + item.Authorized;
+        <tr>
+            <td>
+            @item.IDCR
+            </td>
+            <td>
+            @item.Quantity
+            </td>
+            <td>
+            @item.Atacode
+            </td>
+            <td>
+            @item.Description
+            </td>
+            <td>
+           @item.Requested
+            </td>
+            <td>
+            @item.Authorized
+            </td>
+            <td>
+            @item.CreateDate
+            </td>
+            <td>
+            @item.CreatedBy
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |*@
+                @Html.ActionLink("Delete", "DeleteCode", new { id = item.ID, cr = Model.cr.crID, screen = 2 })
+            </td>
+        </tr>
+    }
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+        <td>@requested</td>
+        <td>@authorized</td>
+
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,184 @@
+﻿@model InventoryTool.Models.CR
+
+@{
+    ViewBag.Title = "Close";
+}
+<br />
+<h2 style="color:dodgerblue">Close C&R</h2>
+@*<h3>Are you sure you want to delete this?</h3>*@
+<div>
+    @*<h4>CR</h4>*@
+    <hr />
+    @using (Html.BeginForm())
+    { @Html.HiddenFor(m => m.crID)
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.WAnumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WAnumber)
+                @Html.HiddenFor(model => model.WAnumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VINnumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VINnumber)
+                @Html.HiddenFor(model => model.VINnumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Servicedate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Servicedate)
+                @Html.HiddenFor(model => model.Servicedate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Odometer)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Odometer)
+                @Html.HiddenFor(model => model.Odometer)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+                @Html.HiddenFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Suppliername)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Supplier)
+                @Html.HiddenFor(model => model.Supplier)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Clientname)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Clientname)
+                @Html.HiddenFor(model => model.Clientname)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Subtotal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Subtotal)
+                @Html.HiddenFor(model => model.Subtotal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IVA)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IVA)
+                @Html.HiddenFor(model => model.IVA)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Total)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Total)
+                @Html.HiddenFor(model => model.Total)
+            </dd>
+
+            <dt>
+                    @Html.DisplayNameFor(model => model.OkedBy)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OkedBy)
+                    @Html.HiddenFor(model => model.OkedBy)
+                </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.CreatedBy)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MaintenanceComments)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaintenanceComments)
+                @Html.HiddenFor(model => model.MaintenanceComments)
+            </dd>
+        </dl>
+    <hr />
+        @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(model => model.Invoicenumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Invoicenumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Invoicenumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Invoicedate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Invoicedate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Invoicedate, "", new { @class = "text-danger" })
+                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Amountpaid, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Amountpaid, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Amountpaid, "", new { @class = "text-danger" })
+                     <span style="color:crimson">(tax included)</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Paymentdate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Paymentdate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Paymentdate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ApComments, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(m => m.ApComments, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(m => m.ApComments, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+        <div class="form-actions no-color">
+            <input type="submit" value="Close" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+
+
+
+
+

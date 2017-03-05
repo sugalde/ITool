@@ -12,16 +12,32 @@ namespace InventoryTool.Models
 
         public int CorpCode { get; set; }
 
+        [Display(Name = "Fleet Number")]
+        [Required(ErrorMessage = "You must enter {0}")]
+        [StringLength(30, ErrorMessage = "The field {0} must be between {2} and {1} characters", MinimumLength = 5)]
         public string FleetNumber { get; set; }
 
+        [Display(Name = "Unit Number")]
+        [Required(ErrorMessage = "You must enter {0}")]
+        [StringLength(30, ErrorMessage = "The field {0} must be between {2} and {1} characters", MinimumLength = 7)]
         public string UnitNumber { get; set; }
 
+        [Display(Name = "Vin Number")]
+        [Required(ErrorMessage = "You must enter {0}")]
+        [StringLength(30, ErrorMessage = "The field {0} must be between {2} and {1} characters", MinimumLength = 10)]
         public string VinNumber { get; set; }
 
+        [Display(Name = "Contract Type")]
+        [Required(ErrorMessage = "You must enter {0}")]
+        [StringLength(10, ErrorMessage = "The field {0} must be between {2} and {1} characters", MinimumLength = 2)]
         public string ContractType { get; set; }
 
+        [Required(ErrorMessage = "You must enter {0}")]
+        [StringLength(10, ErrorMessage = "The field {0} must be between {2} and {1} characters", MinimumLength = 2)]
         public string Make { get; set; }
 
+        [Required(ErrorMessage = "You must enter {0}")]
+        [StringLength(20, ErrorMessage = "The field {0} must be between {2} and {1} characters", MinimumLength = 5)]
         public string ModelCar { get; set; }
 
         public int ModelYear { get; set; }
@@ -31,6 +47,7 @@ namespace InventoryTool.Models
         public decimal CapCost { get; set; }
 
         [Display(Name = "Inservice Date")]
+        [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<DateTime> Inservice_date { get; set; }
         
@@ -62,33 +79,25 @@ namespace InventoryTool.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<DateTime> Sold_process { get; set; }
 
-        public string Cancel_Unit_ind { get; set; }
+        public FleetCancelUnit FleetCancelUnit { get; set; }
 
-        public int Amort_term { get; set; }
+        public int Amort_Term { get; set; }
 
-        public int Leased_months_billed { get; set; }
-
-        [Display(Name = "PSP")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public Nullable<DateTime> Psp_date { get; set; }
-
-        [Display(Name = "PSP Process")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public Nullable<DateTime> Psp_process { get; set; }
+        public int Leased_Months_Billed { get; set; }
 
         [Display(Name = "End Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<DateTime> End_date { get; set; }
 
-        [Display(Name = "UnitAdd")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public Nullable<DateTime> UnitAdd_date { get; set; }
-
+        [Required(ErrorMessage = "You must enter {0}")]
+        [StringLength(5, ErrorMessage = "The field {0} must be between {2} and {1} characters", MinimumLength = 2)]
         public string ScontrNumber { get; set; }
 
         public decimal Amort { get; set; }
 
-        public string LicenseNumber { get; set; }
+        [Required(AllowEmptyStrings = true)]
+        [DisplayFormat(ConvertEmptyStringToNull = false)]
+        public string  LicenseNumber { get; set; }
 
         public string State { get; set; }  
 
@@ -96,25 +105,25 @@ namespace InventoryTool.Models
 
         public string DealerName { get; set; }
 
-        [Display(Name = "Signed")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public Nullable<DateTime> SignedDate { get; set; }
-
-        [Display(Name = "Delivery")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public Nullable<DateTime> Delivery_date { get; set; }
-
         public decimal Insurance { get; set; }
 
         public decimal Secdep { get; set; }
 
-        public string DepartCode { get; set; }
+        public string DepartmentCode { get; set; }
 
         public decimal Residual_Amount { get; set; }
 
-        public string Level { get; set; }
+        public string Level_1 { get; set; }
 
-        public string LevelName { get; set; }
+        public string Level_2 { get; set; }
+
+        public string Level_3 { get; set; }
+
+        public string Level_4 { get; set; }
+
+        public string Level_5 { get; set; }
+
+        public string Level_6 { get; set; }
 
         public string TTL { get; set; }
 
@@ -122,7 +131,9 @@ namespace InventoryTool.Models
 
         public string OutletName { get; set; }
 
-        //public FleetStatus FleetStatus { get; set; } Sirve para poner catalogos que no cambian a menudo
+        public DateTime Created { get; set; }
+
+        public string CreatedBy { get; set; }
 
         //public string GetStringTypeInserviceDate  En caso de querer realizar validaciones o comparativas
         //{

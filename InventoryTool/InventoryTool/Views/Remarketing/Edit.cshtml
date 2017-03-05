@@ -1,0 +1,133 @@
+﻿@model InventoryTool.Models.Fleet
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Remarketing</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Units</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.FleetID)
+        @Html.HiddenFor(model => model.LogNumber)
+        @Html.HiddenFor(model => model.CorpCode)
+        @Html.HiddenFor(model => model.FleetNumber)
+        @Html.HiddenFor(model => model.UnitNumber)
+        @Html.HiddenFor(model => model.VinNumber)
+        @Html.HiddenFor(model => model.ContractType)
+        @Html.HiddenFor(model => model.Make)
+        @Html.HiddenFor(model => model.ModelCar)
+        @Html.HiddenFor(model => model.ModelYear)
+        @Html.HiddenFor(model => model.BookValue)
+        @Html.HiddenFor(model => model.CapCost)
+        @Html.HiddenFor(model => model.Inservice_date)
+        @Html.HiddenFor(model => model.Inservice_process)
+        @Html.HiddenFor(model => model.Original_Inservice)
+        @Html.HiddenFor(model => model.Original_Process)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Offroad_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Offroad_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Offroad_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Offroad_process, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Offroad_process, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Offroad_process, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sold_date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sold_date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sold_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sold_process, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sold_process, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sold_process, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FleetCancelUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.FleetCancelUnit, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FleetCancelUnit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Amort_Term)
+        @Html.HiddenFor(model => model.Leased_Months_Billed)
+        @Html.HiddenFor(model => model.End_date)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ScontrNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ScontrNumber, new { htmlAttributes = new {  @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ScontrNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.Amort)
+        @Html.HiddenFor(model => model.LicenseNumber)
+        @Html.HiddenFor(model => model.State)
+        @Html.HiddenFor(model => model.Roe)
+        @Html.HiddenFor(model => model.DealerName)
+        @Html.HiddenFor(model => model.Insurance)
+        @Html.HiddenFor(model => model.Secdep)
+        @Html.HiddenFor(model => model.DepartmentCode)
+        @Html.HiddenFor(model => model.Residual_Amount)
+        @Html.HiddenFor(model => model.Level_1)
+        @Html.HiddenFor(model => model.Level_2)
+        @Html.HiddenFor(model => model.Level_3)
+        @Html.HiddenFor(model => model.Level_4)
+        @Html.HiddenFor(model => model.Level_5)
+        @Html.HiddenFor(model => model.Level_6)
+        @Html.HiddenFor(model => model.TTL)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OutletCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OutletCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OutletCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OutletName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OutletName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OutletName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

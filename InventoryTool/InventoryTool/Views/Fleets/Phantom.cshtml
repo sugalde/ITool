@@ -1,0 +1,303 @@
+﻿@model PagedList.IPagedList<InventoryTool.Models.Fleet>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Search Units</h2>
+<br />
+<p>
+    @Html.ActionLink("Phantom Home", "Index","Phantom")
+</p>
+@using (Html.BeginForm("Index", "Fleets", FormMethod.Get))
+{
+    <p>
+        Find by : @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" class="btn btn-info" />
+    </p>
+}
+
+<br />
+@using (Html.BeginForm("ExportData", "Fleets", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                Corp Code
+            </th>
+            <th>
+                @Html.ActionLink("Vin Number", "Index", new { sortOrder = ViewBag.VINSortParm, currentFilter = ViewBag.CurrentFilter })
+
+            </th>
+            <th>
+                @Html.ActionLink("Fleet Number", "Index", new { sortOrder = ViewBag.FleetSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                Unit Number
+            </th>
+           
+            <th>
+                Contract Type
+            </th>
+            <th>
+                Make
+            </th>
+            <th>
+                Model Car
+            </th>
+            <th>
+                Model Year
+            </th>
+            <th>
+                Book Value
+            </th>
+            <th>
+                Capping Cost
+            </th>
+            <th>
+                Inservice Date
+            </th>
+            <th>
+                Inservice Process
+            </th>
+            <th>
+                Original Inservice
+            </th>
+            <th>
+                Original Process
+            </th>
+            @*<th>
+                Offroad Date
+            </th>
+            <th>
+                Offroad Process
+            </th>*@
+            @*<th>
+                Sold Date
+            </th>
+            <th>
+                Sold Process
+            </th>*@
+            <th>
+                Cancel Unit
+            </th>
+            @*<th>
+                Amort Term
+            </th>*@
+            <th>
+                Leased Months Billed
+            </th>
+            @*<th>
+                End date
+            </th>*@
+            <th>
+                ScontrNumber
+            </th>
+            @*<th>
+                Amort
+            </th>*@
+            <th>
+                License
+            </th>
+            <th>
+                State
+            </th>
+            @*<th>
+                Roe
+            </th>
+            <th>
+                Dealer Name
+            </th>*@
+            <th>
+                Insurance
+            </th>
+            @*<th>
+                Secdep
+            </th>
+            <th>
+                Department Code
+            </th>
+            <th>
+                Residual Amount
+            </th>*@
+            @*<th>
+                Level 1
+            </th>*@
+            <th>
+                Client Name
+            </th>
+            @*<th>
+                Level 3
+            </th>
+            <th>
+                Level 4
+            </th>
+            <th>
+                Level 5
+            </th>
+            <th>
+                Level 6
+            </th>
+            <th>
+                TTL
+            </th>
+            <th>
+                Outlet Code
+            </th>
+            <th>
+                Outlet Name
+            </th>*@
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+                <td>
+                    @Html.ActionLink("Select", "Select", new { id = item.FleetID }) 
+                    @*@Html.ActionLink("Details", "Details", new { id = item.FleetID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.FleetID })*@
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CorpCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VinNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FleetNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitNumber)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModelCar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModelYear)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CapCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inservice_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inservice_process)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Original_Inservice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Original_Process)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Offroad_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Offroad_process)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sold_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sold_process)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.FleetCancelUnit)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Amort_Term)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Leased_Months_Billed)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.End_date)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScontrNumber)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Amort)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.LicenseNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Roe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DealerName)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Insurance)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Secdep)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Residual_Amount)
+                </td>*@
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Level_1)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level_2)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Level_3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level_4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level_5)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level_6)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TTL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OutletCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OutletName)
+                </td>*@
+            </tr>
+        }
+        <tr>
+            @*<td>
+                <input type="submit" name="Export" id="Export" value="Export" class="btn btn-success" />
+            </td>*@
+        </tr>
+
+    </table>
+}
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+

@@ -1,0 +1,118 @@
+﻿@model InventoryTool.Models.CR
+
+@{
+    ViewBag.Title = "Cancel";
+}
+<br />
+<h2 style="color:brown">Cancel C&R</h2>
+@*<h3>Are you sure you want to delete this?</h3>*@
+<div>
+    @*<h4>CR</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WAnumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WAnumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VINnumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VINnumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicedate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicedate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Odometer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Odometer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Supplier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Suppliername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Clientname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Clientname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IVA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IVA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OkedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OkedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Cancel" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

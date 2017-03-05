@@ -1,0 +1,171 @@
+﻿@model IEnumerable<InventoryTool.Models.FeeCode>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fleet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LogNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CapCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Term)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lpis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OnRdDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OfRdDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Scontr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsPremium)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResidualAmt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MMYY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Start)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Method)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Createdby)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fleet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LogNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CapCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Term)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lpis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OnRdDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OfRdDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Scontr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsPremium)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResidualAmt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MMYY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Method)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Createdby)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FeeCode_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FeeCode_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FeeCode_Id })
+        </td>
+    </tr>
+}
+
+</table>

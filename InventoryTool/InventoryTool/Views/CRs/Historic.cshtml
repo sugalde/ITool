@@ -1,0 +1,147 @@
+﻿@model PagedList.IPagedList<InventoryTool.Models.CR>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Historic</h2>
+<br />
+<p>
+    @{  if (ViewBag.screen == 2)
+        {  @Html.ActionLink("Back","Edit",new { id = @ViewBag.cr });}
+        else { @Html.ActionLink("Back", "Create",new { id = @ViewBag.cr });}}
+</p>
+<br />
+@using (Html.BeginForm("Index", "CRs", FormMethod.Get))
+{
+    <p>
+        Find by: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" class="btn btn-info" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("WA number", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("VIN number", "Index", new { sortOrder = ViewBag.ObligorSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Service date
+        </th>
+        <th>
+            Odometer
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Supplier
+        </th>
+        <th>
+            @Html.ActionLink("Client name", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Subtotal
+        </th>
+        <th>
+            IVA
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            OkedBy
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Invoicenumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Invoicedate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amountpaid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paymentdate)
+            </th>*@
+        <th>
+            CreatedBy
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WAnumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VINnumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servicedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Odometer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Suppliername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clientname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IVA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OkedBy)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Invoicenumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Invoicedate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amountpaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paymentdate)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.crID }) |
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Historic",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+
+
+

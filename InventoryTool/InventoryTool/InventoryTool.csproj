@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -44,6 +45,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JQueryUIHelpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=1440f6df3b58b47e, processorArchitecture=MSIL">
+      <HintPath>..\packages\jQueryUIHelpers.Mvc5.3.0.0\lib\net45\JQueryUIHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.2.1.2.3\lib\net45\Excel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -214,20 +226,36 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AcodesController.cs" />
+    <Compile Include="Controllers\CRdetailsController.cs" />
+    <Compile Include="Controllers\CRsController.cs" />
+    <Compile Include="Controllers\FeeCodesController.cs" />
     <Compile Include="Controllers\FleetsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PhantomController.cs" />
+    <Compile Include="Controllers\RemarketingController.cs" />
+    <Compile Include="Controllers\ReadExcelController.cs" />
+    <Compile Include="Controllers\SsuppliersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Acode.cs" />
+    <Compile Include="Models\CR.cs" />
+    <Compile Include="Models\CRdetail.cs" />
+    <Compile Include="Models\General.cs" />
+    <Compile Include="Models\Migrations\Configuration.cs" />
+    <Compile Include="Models\FeeCode.cs" />
+    <Compile Include="Models\FleetCancelUnit.cs" />
     <Compile Include="Models\FleetStatus.cs" />
+    <Compile Include="Models\Ssupplier.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Fleet.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\InventoryToolContext.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\newCR.cs" />
     <Compile Include="ViewModels\RoleView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -237,6 +265,41 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Phantom.jpg" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\animated-overlay.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -253,6 +316,10 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.11.0.js" />
+    <Content Include="Scripts\jquery-ui-1.11.0.min.js" />
+    <Content Include="Scripts\jquery-ui.unobtrusive-3.0.0.js" />
+    <Content Include="Scripts\jquery-ui.unobtrusive-3.0.0.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -261,7 +328,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -295,17 +364,59 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Roles.cshtml" />
+    <Content Include="Views\Users\AddRole.cshtml" />
     <Content Include="Views\Fleets\Create.cshtml" />
     <Content Include="Views\Fleets\Delete.cshtml" />
     <Content Include="Views\Fleets\Details.cshtml" />
     <Content Include="Views\Fleets\Edit.cshtml" />
     <Content Include="Views\Fleets\Index.cshtml" />
+    <Content Include="Views\Remarketing\Details.cshtml" />
+    <Content Include="Views\Remarketing\Edit.cshtml" />
+    <Content Include="Views\Remarketing\Index.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Roles.cshtml" />
     <Content Include="Views\Users\AddRole.cshtml" />
+    <Content Include="Views\FeeCodes\Create.cshtml" />
+    <Content Include="Views\FeeCodes\Delete.cshtml" />
+    <Content Include="Views\FeeCodes\Details.cshtml" />
+    <Content Include="Views\FeeCodes\Edit.cshtml" />
+    <Content Include="Views\FeeCodes\Index.cshtml" />
+    <Content Include="Views\ReadExcel\Index.cshtml" />
+    <Content Include="Views\ReadExcel\Import.cshtml" />
+    <Content Include="Views\CRs\Create.cshtml" />
+    <Content Include="Views\CRs\Delete.cshtml" />
+    <Content Include="Views\CRs\Details.cshtml" />
+    <Content Include="Views\CRs\Edit.cshtml" />
+    <Content Include="Views\CRs\Index.cshtml" />
+    <Content Include="Views\CRdetails\Create.cshtml" />
+    <Content Include="Views\CRdetails\Delete.cshtml" />
+    <Content Include="Views\CRdetails\Details.cshtml" />
+    <Content Include="Views\CRdetails\Edit.cshtml" />
+    <Content Include="Views\CRdetails\Index.cshtml" />
+    <Content Include="Views\Ssuppliers\Create.cshtml" />
+    <Content Include="Views\Ssuppliers\Delete.cshtml" />
+    <Content Include="Views\Ssuppliers\Details.cshtml" />
+    <Content Include="Views\Ssuppliers\Edit.cshtml" />
+    <Content Include="Views\Ssuppliers\Index.cshtml" />
+    <Content Include="Views\Acodes\Create.cshtml" />
+    <Content Include="Views\Acodes\Delete.cshtml" />
+    <Content Include="Views\Acodes\Details.cshtml" />
+    <Content Include="Views\Acodes\Edit.cshtml" />
+    <Content Include="Views\Acodes\Index.cshtml" />
+    <Content Include="Views\Fleets\Phantom.cshtml" />
+    <Content Include="Views\CRs\Approve.cshtml" />
+    <Content Include="Views\CRs\Close.cshtml" />
+    <Content Include="Views\CRs\APlist.cshtml" />
+    <Content Include="Views\CRs\Historic.cshtml" />
+    <Content Include="Views\CRs\APDetails.cshtml" />
+    <Content Include="Views\Phantom\Index.cshtml" />
+    <Content Include="Views\CRs\General.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadedFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

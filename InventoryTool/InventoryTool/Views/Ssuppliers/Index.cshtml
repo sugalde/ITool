@@ -1,0 +1,140 @@
+﻿
+@model PagedList.IPagedList<InventoryTool.Models.Ssupplier>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<h2>Suppliers Catalog</h2>
+<br />
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+@using (Html.BeginForm("Index", "Ssuppliers", FormMethod.Get))
+{
+    <p>
+        Find by: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" class="btn btn-info" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.ActionLink("Supplier Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+         Street
+        </th>
+        <th>
+        City
+        </th>
+        <th>
+        State
+        </th>
+        <th>
+       Country
+        </th>
+        <th>
+            @Html.ActionLink("ZIP Code", "Index", new { sortOrder = ViewBag.ObligorSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+      Affiliate store
+        </th>
+        <th>
+        Supplier Rate
+        </th>
+        <th>
+        Class
+        </th>
+        <th>
+       Franchise
+        </th>
+        <th>
+            @Html.ActionLink("Telephone/fax/email", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+       Contact Name
+        </th>
+        <th>
+     Status
+        </th>
+        <th>
+        Type
+        </th>
+        <th>
+     Rating
+        </th>
+        <th>
+       Last WA date
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.SupplierID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.SupplierID }) |*@
+            @Html.ActionLink("Select", "Select", new { id = item.SupplierID, cr = ViewBag.cr, screen = ViewBag.screen})
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupplierName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZIPCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Affiliatestore)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupplierRate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Class)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Franchise)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telephonefaxemail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastWAdate)
+        </td>
+    </tr>
+}
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("List",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -1,0 +1,191 @@
+﻿@model PagedList.IPagedList<InventoryTool.Models.General>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "General";
+}
+<br />
+<h2>C&Rs General Report</h2>
+<br />
+<p>
+@Html.ActionLink("Phantom Home", "Index", "Phantom")
+</p>
+<br />
+@using (Html.BeginForm("Index", "CRs", FormMethod.Get))
+{
+    <p>
+        Find by: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" class="btn btn-info" />
+    </p>
+}
+@using (Html.BeginForm("ExportData", "CRs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("WA number", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("VIN number", "Index", new { sortOrder = ViewBag.ObligorSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Service date
+        </th>
+        <th>
+            Odometer
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Supplier
+        </th>
+        <th>
+            @Html.ActionLink("Client name", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Subtotal
+        </th>
+        <th>
+            IVA
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+         Quantity
+        </th>
+        <th>
+        Atacode
+        </th>
+        <th>
+        Description
+        </th>
+        <th>
+        Requested
+        </th>
+        <th>
+        Authorized
+        </th>
+        <th>
+        Create Date
+        </th>
+        <th>
+        Created By
+        </th>
+        <th>
+            OkedBy
+        </th>
+        <th>Invoice number
+            </th>
+            <th>
+             Invoice date
+            </th>
+            <th>
+           Amount paid
+            </th>
+            <th>
+           Payment date
+            </th>
+        <th>
+            Maintenance Comments 
+        </th>
+        <th>Ap Comments</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WAnumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VINnumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Servicedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Odometer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Suppliername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clientname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IVA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Atacode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requested)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Authorized)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OkedBy)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Invoicenumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Invoicedate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amountpaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paymentdate)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaintenanceComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApComments)
+            </td>
+        </tr>
+    }
+    <tr>
+        <td>
+            <input type="submit" name="Export" id="Export" value="Export" class="btn btn-success" />
+        </td>
+    </tr>
+</table>
+}
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("General",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+
+
+

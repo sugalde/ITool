@@ -1,12 +1,11 @@
-﻿@model IEnumerable<InventoryTool.Models.Fleet>
-
+﻿@model PagedList.IPagedList<InventoryTool.Models.Fleet>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Units</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,88 +14,84 @@
 {
     <p>
         Find by Fleet Or LogNumber: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
+        <input type="submit" value="Search" class="btn btn-info" />
     </p>
 }
+
+ 
+@using (Html.BeginForm("ExportData", "Fleets", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
 <table class="table">
     <tr>
+        <th></th>
         <th>
             @Html.ActionLink("LogNumber", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            CorpCode
+            Corp Code
         </th>
         <th>
             @Html.ActionLink("FleetNumber", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            UnitNumber
+            Unit Number
         </th>
         <th>
-            VinNumber
+            Vin Number
         </th>
         <th>
-            ContractType
+            Contract Type
         </th>
         <th>
             Make
         </th>
         <th>
-            ModelCar
+            Model Car
         </th>
         <th>
-            ModelYear
+            Model Year
         </th>
         <th>
-            BookValue
+            Book Value
         </th>
         <th>
-            CapCost
+            Capping Cost
         </th>
         <th>
-            Inservice_date
+            Inservice Date
         </th>
         <th>
-            Inservice_process
+            Inservice Process
         </th>
         <th>
-            Original_Inservice
+            Original Inservice
         </th>
         <th>
-            Original_Process
+            Original Process
         </th>
         <th>
-            Offroad_date
+            Offroad Date
         </th>
         <th>
-            Offroad_process
+            Offroad Process
         </th>
         <th>
-            Sold_date
+            Sold Date
         </th>
         <th>
-            Sold_process
+            Sold Process
         </th>
         <th>
-            Cancel_Unit_ind
+            Cancel Unit
         </th>
         <th>
-            Amort_term
+            Amort Term
         </th>
         <th>
-            Leased_months_billed
+            Leased Months Billed
         </th>
         <th>
-            Psp_date
-        </th>
-        <th>
-            Psp_process
-        </th>
-        <th>
-            End_date
-        </th>
-        <th>
-            UnitAdd_date
+            End date
         </th>
         <th>
             ScontrNumber
@@ -105,7 +100,7 @@
             Amort
         </th>
         <th>
-            LicenseNumber
+            License
         </th>
         <th>
             State
@@ -114,13 +109,7 @@
             Roe
         </th>
         <th>
-            DealerName
-        </th>
-        <th>
-            SignedDate
-        </th>
-        <th>
-            Delivery_date
+            Dealer Name
         </th>
         <th>
             Insurance
@@ -129,31 +118,47 @@
             Secdep
         </th>
         <th>
-            DepartCode
+            Department Code
         </th>
         <th>
-            Residual_Amount
+            Residual Amount
         </th>
         <th>
-            Level
+            Level 1
         </th>
         <th>
-            LevelName
+            Level 2
+        </th>
+        <th>
+            Level 3
+        </th>
+        <th>
+            Level 4
+        </th>
+        <th>
+            Level 5
+        </th>
+        <th>
+            Level 6
         </th>
         <th>
             TTL
         </th>
         <th>
-            OutletCode
+            Outlet Code
         </th>
         <th>
-            OutletName
+            Outlet Name
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.FleetID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.FleetID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.FleetID })
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.LogNumber)
         </td>
@@ -212,25 +217,16 @@
             @Html.DisplayFor(modelItem => item.Sold_process)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Cancel_Unit_ind)
+            @Html.DisplayFor(modelItem => item.FleetCancelUnit)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Amort_term)
+            @Html.DisplayFor(modelItem => item.Amort_Term)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Leased_months_billed)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Psp_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Psp_process)
+            @Html.DisplayFor(modelItem => item.Leased_Months_Billed)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.End_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitAdd_date)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ScontrNumber)
@@ -242,7 +238,7 @@
             @Html.DisplayFor(modelItem => item.LicenseNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LicenseNumber)
+            @Html.DisplayFor(modelItem => item.State)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Roe)
@@ -251,28 +247,34 @@
             @Html.DisplayFor(modelItem => item.DealerName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SignedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delivery_date)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Insurance)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Secdep)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DepartCode)
+            @Html.DisplayFor(modelItem => item.DepartmentCode)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Residual_Amount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Level)
+            @Html.DisplayFor(modelItem => item.Level_1)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LevelName)
+            @Html.DisplayFor(modelItem => item.Level_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level_3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level_4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level_5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Level_6)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TTL)
@@ -283,17 +285,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.OutletName)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FleetID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FleetID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FleetID })
-        </td>
     </tr>
 }
-
+    <tr>
+      <td>
+          <input type="submit" name="Export" id="Export" value="Export" class="btn btn-success" />
+      </td>
+    </tr>
+  
 </table>
+}
 <br />
-@*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

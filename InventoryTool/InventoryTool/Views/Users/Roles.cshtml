@@ -4,6 +4,7 @@
 }
 
 <h2>Roles for user : @Model.Name</h2>
+<h3>@ViewBag.Error</h3>
 
 <p>
     @Html.ActionLink("Add Role", "AddRole", new { userID = Model.UserID }, new { @class = "btn btn-primary" })
@@ -24,7 +25,7 @@
                 @Html.DisplayFor(modelItem => Model.Roles[i].Name)
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { user = Model, roleID = Model.Roles[i].RoleID })
+                @Html.ActionLink("Delete", "Delete", new { userID = Model.UserID, roleID = Model.Roles[i].RoleID })
             </td>
         </tr>
     }
